@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.moodys.atlas.storage</groupId>
+  <artifactId>atlas-storage</artifactId>
+  <version>1.0.2-SNAPSHOT</version>
+
+  <packaging>pom</packaging>
+
+  <parent>
+    <groupId>com.moodys.atlas</groupId>
+    <artifactId>atlas-spring-boot</artifactId>
+    <version>0.2.33-RELEASE</version> <!-- when update the version, pls also update atlas-spring-boot.version in properties -->
+  </parent>
+
+  <properties>
+    <java.version>1.8</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <spring-boot.version>1.3.3.RELEASE</spring-boot.version>
+    <springfox.swagger.version>2.2.2</springfox.swagger.version>
+    <postgresql.version>9.4-1201-jdbc41</postgresql.version>
+    <nexus.url>http://nexus-lhr.analytics.moodys.net</nexus.url>
+    <atlas.repo.snapshot>atlas-snapshots</atlas.repo.snapshot>
+    <atlas.repo.release>atlas-releases</atlas.repo.release>
+    <atlas-spring-boot.version>0.2.33-RELEASE</atlas-spring-boot.version>
+  </properties>
+
+  <modules>
+    <module>atlas-storage-service</module>
+  </modules>
+
+  <repositories>
+    <repository>
+      <id>Atlas repo releases</id>
+      <name>Atlas repo releases</name>
+      <url>${nexus.url}/content/repositories/${atlas.repo.release}</url>
+      <releases>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>Atlas repo snapshots</id>
+      <name>Atlas repo snapshots</name>
+      <url>${nexus.url}/content/repositories/${atlas.repo.snapshot}</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <distributionManagement>
+    <repository>
+      <id>atlas-deployment</id>
+      <name>Atlas Releases</name>
+      <url>${nexus.url}/content/repositories/${atlas.repo.release}</url>
+    </repository>
+    <snapshotRepository>
+      <id>atlas-deployment</id>
+      <name>Atlas Snapshots</name>
+      <url>${nexus.url}/content/repositories/${atlas.repo.snapshot}</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>
