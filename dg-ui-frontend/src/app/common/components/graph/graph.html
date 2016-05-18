@@ -1,0 +1,15 @@
+<div>
+	<div style="position: absolute;" ng-show="ctrl.enableZoomButtons">
+		<div class="btn-group">
+			<button class="btn btn-default btn-zoom-out"><span class="fa fa-search-minus"></span></button>
+			<button class="btn btn-default btn-zoom-in"><span class="fa fa-search-plus"></span></button>
+		</div>
+		<div class="btn-group" style="margin-left: 10px;">
+			<button class="btn btn-default btn-actual-size" ng-class="{'active': ctrl.autoResizeGraph === 'disabled'}">Original</button>
+			<button class="btn btn-default btn-auto-size" ng-class="{'active': ctrl.autoResizeGraph === 'auto' || ctrl.autoResizeGraph === undefined}">Auto</button>
+			<button class="btn btn-default btn-fill-view" ng-class="{'active': ctrl.autoResizeGraph === 'fill'}">Fill</button>
+		</div>
+	</div>
+	<svg width="100%" ng-style="{height: ctrl.height + 'px'}">
+	</svg>
+</div>

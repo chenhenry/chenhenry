@@ -1,0 +1,100 @@
+<div>
+    <h2 style="margin: -31px -21px;">{{ctrl.structure.name}} <font style="color:#999999; font-size: 18px">({{ctrl.isDataLake? 'Data Lake': 'RFO'}})</font></h2>
+    <ers-button label="Delete Structure" ng-show="ctrl.isDataLake" class="secondary  pull-right" ng-click="ctrl.deleteDataAsset()"></ers-button>
+    <ers-tabset class="secondary">
+        <ers-tab heading="Structure Configuration" ng-click="ctrl.structureConfig()">
+            <div class="row">
+                <div class="col-md-5 col-lg-5 col-xlg-4">
+                    <ers-panel collapsible="false">
+                        <ers-panel-header>Global Settings</ers-panel-header>
+                        <ers-panel-body>
+                            <div class="form-group">
+                                <ers-toolbar ng-show="ctrl.isDataLake">
+                                    <ers-icon name="edit" ng-click="ctrl.enableEdit()" ng-disabled="ctrl.isEditing"></ers-icon>
+                                    <ers-toolbar-separator></ers-toolbar-separator>
+                                    <ers-icon name="save" ng-click="ctrl.submit()" type="submit" form="formSample" ng-disabled="!ctrl.isEditing"></ers-icon>
+                                    <ers-icon name="cancel" ng-click="ctrl.cancelEdit()" ng-disabled="!ctrl.isEditing"></ers-icon>
+                                </ers-toolbar>
+                            </div>
+                            <div>
+                                <form class="form-horizontal" id="formSample" name="formSample" novalidate ers-form="ctrl.submit()">
+                                    <div class="form-group">
+                                        <ers-label value="Label:" class="col-sm-4 control-label"></ers-label>
+                                        <ers-textbox ng-model="ctrl.structure.name" ng-maxlength="100" ng-readonly='true' class="col-sm-6"></ers-textbox>
+                                    </div>
+                                    <div class="form-group" ng-show="!ctrl.isDataLake">
+                                        <ers-label value="Type:" class="col-sm-4 control-label"></ers-label>
+                                        <ers-textbox ng-model="ctrl.structure.type" ng-maxlength="100" ng-readonly='true' class="col-sm-6"></ers-textbox>
+                                    </div>
+                                    <div class="form-group">
+                                        <ers-label value="Description:" class="col-sm-4 control-label"></ers-label>
+                                        <div class="col-sm-6">
+                                            <!--Added form-control class to apply ers styling, this may interfere with editing validation-->
+                                            <textarea class="form-control" rows="3" ng-model="ctrl.structure.description" ng-readonly='!ctrl.isEditing'></textarea>
+                                        </div>                                        
+                                    </div>
+                                    <div class="form-group" ng-show="false">
+                                        <ers-label value="Reporting Date:" class="col-sm-4 control-label"></ers-label>
+                                        <ers-checkbox ng-init="cb=true" ng-model="cb" class="col-sm-6"></ers-checkbox>
+                                    </div>
+                                    <div class="form-group" ng-show="ctrl.isDataLake">
+                                        <ers-label value="File Format:" class="col-sm-4 control-label"></ers-label>
+                                        <ers-textbox ng-model="ctrl.structure.type" ng-maxlength="100" ng-readonly='true' class="col-sm-6"></ers-textbox>
+                                    </div>
+                                    <div class="form-group" ng-show="ctrl.isDataLake">
+                                        <ers-label value="Value Separator:" class="col-sm-4 control-label"></ers-label>
+                                        <ers-textbox ng-model="ctrl.structure.structure.valueDelimiter" ng-readOnly="!ctrl.isEditing" ng-maxlength="100" class="col-sm-6" ></ers-textbox>
+                                    </div>
+                                    <div class="form-group" ng-show="ctrl.isDataLake">
+                                        <ers-label value="Record Separator:" class="col-sm-4 control-label"></ers-label>
+                                        <ers-textbox ng-model="ctrl.structure.structure.recordDelimiter" ng-readOnly="!ctrl.isEditing" ng-maxlength="100" class="col-sm-6"></ers-textbox>
+                                    </div>
+                                    <div class="form-group" ng-show="ctrl.isDataLake">
+                                        <ers-label value="Decimal Separator:" class="col-sm-4 control-label"></ers-label>
+                                        <ers-textbox ng-model="ctrl.structure.structure.decimalSeparator" ng-readOnly="!ctrl.isEditing" ng-maxlength="100" class="col-sm-6"></ers-textbox>
+                                    </div>
+                                    <div class="form-group" ng-show="ctrl.isDataLake">
+                                        <ers-label value="Field Separator:" class="col-sm-4 control-label"></ers-label>
+                                        <ers-textbox ng-model="ctrl.structure.structure.delimiter" ng-readOnly="!ctrl.isEditing" ng-maxlength="100" class="col-sm-6"></ers-textbox>
+                                    </div>
+                                    <div class="form-group" ng-show="ctrl.isDataLake">
+                                        <ers-label value="Date Format:" class="col-sm-4 control-label"></ers-label>
+                                        <ers-textbox ng-model="ctrl.structure.structure.dateFormat" ng-readOnly="!ctrl.isEditing" ng-maxlength="100" class="col-sm-6"></ers-textbox>
+                                    </div>
+                                </form>
+                            </div>
+                        </ers-panel-body>
+                    </ers-panel>
+                </div>
+                <div class="col-md-7 col-lg-7 col-xlg-8">
+                    <ers-panel collapsible="false">
+                        <ers-panel-header>Column Details</ers-panel-header>
+                        <ers-panel-body>
+                            <ers-toolbar>
+                                <ers-icon name="edit" ng-show="ctrl.isDataLake"></ers-icon>
+                            </ers-toolbar>
+                            <ers-grid options="ctrl.gridOptions" ng-style="{'height': ctrl.isDataLake ? '320px':'353px'}"></ers-grid>
+                        </ers-panel-body>
+                    </ers-panel>
+                </div>
+            </div>
+        </ers-tab>
+
+        <ers-tab heading="Assigned Files in Data Lake" ng-click="ctrl.assignedFiles()" ng-show="ctrl.isDataLake">
+            <ers-panel collapsible="false">
+                <ers-panel-body>
+                    <ers-toolbar>
+                        <ers-icon name="refresh" ng-click="ctrl.refresh()"></ers-icon>
+                        <ers-button label="Assign Other Structure" class="secondary" ng-click="ctrl.assignOtherStructure()"></ers-button>
+                        <ers-button label="Remove Assigned Structure" class="secondary" ng-click="ctrl.removeAssignedStructure()"></ers-button>
+                    </ers-toolbar>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ers-grid options="ctrl.gridFileOptions" style="height:350px"></ers-grid>
+                        </div>
+                    </div>
+                </ers-panel-body>
+            </ers-panel>
+        </ers-tab>
+    </ers-tabset>
+</div>

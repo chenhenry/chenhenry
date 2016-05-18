@@ -1,0 +1,6 @@
+<div class="language-select">
+	<label>Language:</label>
+	<select name="languageSelector" id="languageSelector" ng-model="ctrl.currentLocale" ng-change="ctrl.changeLanguage(ctrl.currentLocale)"
+	class="form-control" ng-options="locale.name for locale in ctrl.locales track by locale.code">
+	</select>
+</div>

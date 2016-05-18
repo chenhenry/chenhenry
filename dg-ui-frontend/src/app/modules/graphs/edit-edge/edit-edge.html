@@ -1,0 +1,28 @@
+<div ng-show="ctrl.edge">
+	<ers-panel ng-disabled="true">
+		<ers-panel-header>
+			Edit Edge
+		</ers-panel-header>
+		<ers-panel-body>
+			<form>
+				<div class="form-group">
+					<label for="label">Label:</label>
+					<input id="label" type="text" class="form-control" placeholder="None" ng-model="ctrl.edge.label" />
+				</div>
+				<div class="form-group">
+					<label for="type">Type:</label>
+					<select id="type" class="form-control" ng-model="ctrl.edge.type">
+						<option value="vee">Arrow</option>						
+						<option value="undirected">Undirected</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<ers-checkbox ng-model="ctrl.edge.dashed">Dashed</ers-checkbox>
+				</div>
+				<button type="button" class="btn btn-primary" ng-click="ctrl.onUpdatedLocal()">Update</button>
+				<button type="button" class="btn btn-default" ng-click="ctrl.onCancelLocal()">Cancel</button>
+				<button type="button" class="btn btn-default pull-right" ng-click="ctrl.onDeletedLocal()">Delete</button>
+			</form>
+		</ers-panel-body>
+	</ers-panel>
+</div>

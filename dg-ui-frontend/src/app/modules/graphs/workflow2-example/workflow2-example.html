@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-md-8">
+		<ers-panel>
+			<ers-panel-header>
+				Workflow Example 2 (Approvals)
+			</ers-panel-header>
+			<ers-panel-body>
+				<graph nodes="ctrl.nodes" edges="ctrl.edges" height="250" direction="LR" selected-node="ctrl.node" on-selected="ctrl.onNodeSelected(id)">
+				</graph>
+			</ers-panel-body>
+		</ers-panel>
+	</div>
+	<div class="col-md-4">
+		<edit-node node="ctrl.node" edges="ctrl.childEdges" nodes="ctrl.nodes" on-updated="ctrl.onNodeUpdated(node, childEdges)"
+		on-deleted="ctrl.onNodeDeleted(id)" on-cancel="ctrl.onNodeCancel()" on-create-child="ctrl.onNodeCreateChild(id)"></edit-node>
+	</div>
+</div>

@@ -1,0 +1,48 @@
+.dropdown.select-container > div {
+    > input {
+        width: 230px;
+    }    
+} 
+
+ers-tabset.full-screen{
+    height: calc(100vh - 51px);;
+    margin-left: 0-20px;
+    margin-right: 0-20px;
+       
+    .tab-content{
+        background: #fff;
+        padding-left: 20px;
+        padding-right: 20px; 
+        
+        .accomodate-drawer {
+            padding-left: 40px;
+            left: 25px;
+        }
+    }
+}
+
+
+.ers-drawer .ers-drawer-container-left .ers-drawer-block-container-left {
+    .ers-drawer-content-left {
+        width: 100%;
+    }
+    
+    .ers-splitter-bar-left {		
+        display: none;		
+    }    
+}
+
+textarea.ng-invalid {
+    border: 1px solid #c00;
+}
+
+.ers-panel-maximized {
+    height: 100%;
+}
+
+.ers-grid .ag-cell {
+    padding: 0 5px;
+    .ag-cell-value-read {
+        padding: 0;
+    }
+}

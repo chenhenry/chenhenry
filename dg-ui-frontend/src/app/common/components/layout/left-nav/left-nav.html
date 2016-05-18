@@ -1,0 +1,15 @@
+<div class="side-bar">
+	<ul class="nav">
+		<li ng-repeat="item in ctrl.menuItems" ui-sref-active="active">
+			<a ui-sref="{{item.state.name}}"><sup class="badge">{{item.notificationCount}}</sup><span class="nav-text">{{item.name}}</span></a>
+			<ul class="nav sub-nav" ng-show="item.showSubmenu">
+				<li ng-repeat="subitem in item.children" ui-sref-active="active">
+					<a ui-sref="{{subitem.state.name}}">{{subitem.name}}</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<div class="text-center" style="bottom: 40px; position: absolute; width: 100%;">
+		<a href="javascript:void(0)" ng-click="ctrl.toggleMenu()" style="display: block; width: 100%; padding: 5px; font-size: 16px;"><i class="fa" ng-class="{'fa-angle-double-left' : !ctrl.collapsed, 'fa-angle-double-right' : ctrl.collapsed}"></i></a>
+	</div>
+</div>

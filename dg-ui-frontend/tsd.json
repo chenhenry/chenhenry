@@ -1,0 +1,57 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "jquery/jquery.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "angularjs/angular.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "angular-ui-router/angular-ui-router.d.ts": {
+      "commit": "81b951f1ac437d1eb5ff5171a0bfa6c467634b13"
+    },
+    "angularjs/angular-resource.d.ts": {
+      "commit": "d99f6bb17b9b8a30551da3a387b0ca4c28f5cb06"
+    },
+    "webpack/webpack.d.ts": {
+      "commit": "81b951f1ac437d1eb5ff5171a0bfa6c467634b13"
+    },
+    "node/node.d.ts": {
+      "commit": "81b951f1ac437d1eb5ff5171a0bfa6c467634b13"
+    },
+    "angular-translate/angular-translate.d.ts": {
+      "commit": "f29bf726a60674dbf24bab06a26403a3871c3f21"
+    },
+    "d3/d3.d.ts": {
+      "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
+    },
+    "dagre/dagre.d.ts": {
+      "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
+    },
+    "dagre-d3/dagre-d3.d.ts": {
+      "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
+    },
+    "underscore/underscore.d.ts": {
+      "commit": "e69fe60f2d6377ea4fae539493997b098f52cad1"
+    },
+    "angularjs/angular-mocks.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "jasmine/jasmine.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "ers-ui-components/ers-ui-components.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "fusioncharts/fusioncharts.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "angular-ui-bootstrap/angular-ui-bootstrap.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    }
+  }
+}

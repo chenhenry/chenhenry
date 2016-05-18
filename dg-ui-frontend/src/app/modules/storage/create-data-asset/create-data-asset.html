@@ -1,0 +1,20 @@
+<div>
+    <ers-tabset class="full-screen">
+        <ers-tab heading="Create RFo Data Assets">
+            <div class="position: relative;display: flex;width: 230px;">
+                <label>Select a data source and click on Create Data Assets to create the Data Assets for a RiskFoundation schema</label><br>
+                <label>Data Source:</label>
+                <div style="position: relative;display: inline-block;width: 200px;">
+                    <select ng-model="ctrl.selected" id="sourceNameSelector" class="form-control" >
+                        <option value="{{item.name}}" ng-repeat="item in ctrl.datasources | filter:{type:'rfo'}">{{item.name}}</option>
+                    </select>
+                </div>
+                <div style="position:relative;display: inline-block;width: 90px;">
+                    <ers-button ng-click="ctrl.importDataAssets()">
+                        Create Data Assets
+                    </ers-button>
+                </div>
+            </div>
+        </ers-tab>
+    </ers-tabset>
+</div>

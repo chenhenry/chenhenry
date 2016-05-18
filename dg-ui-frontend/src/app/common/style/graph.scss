@@ -1,0 +1,83 @@
+.node rect,
+.node circle,
+.node ellipse {
+	stroke: #2e6da4;
+	fill: #fff;
+	stroke-width: 1px;
+	cursor: pointer;
+}
+
+.node-active rect {
+	stroke: #398439;
+}
+
+.node-content {
+	padding: 0;
+	text-align: left;
+	color: #444;
+	font-weight: normal;
+	font-size: 12px;
+	line-height: 16px;
+	cursor: pointer;
+}
+
+.node-content .icon {
+	float: left;
+}
+
+.node-content .right-section {
+	margin-left: 54px;
+	min-width: 100px;
+}
+
+.node-content .right-section .name {
+	font-size: 13px;
+}
+
+.node-content .right-section .title {
+	color: #666;
+}
+
+.node-content .right-section .location {
+	color: #999;
+}
+
+.edgePath path {
+	stroke: #999;
+	fill: #fff;
+	stroke-width: 1px;
+}
+
+.data-browser-toolbar {
+	margin: 10px 5px;
+}
+
+.data-browser-labelStyles {
+	position : relative;
+	display: inline-block;
+	width: 90px;
+}
+
+.data-browser-fieldStyles {
+	position: relative;
+	display: inline-block;
+	width: 500px;
+	margin-bottom: 5px;
+}
+
+.create-data-asset {
+	position: relative;
+	display: inline-block;
+	width: 200px;
+}
+
+
+.divider {
+	height: 20px;
+	border-left: 1px solid #DDD;
+	margin-left: 2px;
+	margin-right: 2px; }
+    
+.control-label {
+    text-align: right;
+}

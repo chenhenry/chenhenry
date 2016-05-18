@@ -1,0 +1,50 @@
+<div>
+	<h1 class="page-title">Dashboard</h1>
+	<div class="row">
+		<div class="col-md-12">
+			<ers-panel header="Chart">
+				<div style="min-height: 300px;">
+					<ers-chart type="column2d" definition="ctrl.chartData"></ers-chart>
+				</div>
+			</ers-panel>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<bank-list data-title="Best Banks"></bank-list>
+		</div>
+		<div class="col-md-6">
+			<bank-list data-title="Worst Banks"></bank-list>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<ers-panel header="Chart">
+				<div style="min-height: 300px;">
+					<ers-chart type="line" definition="ctrl.chartData"></ers-chart>
+				</div>
+			</ers-panel>
+		</div>
+		<div class="col-md-6">
+			<ers-panel header="Chart">
+				<div style="min-height: 300px;">
+					<ers-chart type="pie2d" definition="ctrl.chartData"></ers-chart>
+				</div>
+			</ers-panel>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<random-fruit></random-fruit>
+		</div>
+		<div class="col-md-3">
+			<random-fruit></random-fruit>
+		</div>
+		<div class="col-md-3">
+			<random-fruit></random-fruit>
+		</div>
+		<div class="col-md-3">
+			<random-fruit></random-fruit>
+		</div>
+	</div>
+</div>

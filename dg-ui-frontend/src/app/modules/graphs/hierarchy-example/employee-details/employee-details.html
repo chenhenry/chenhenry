@@ -1,0 +1,52 @@
+<div ng-show="ctrl.employee">
+	<ers-panel ng-disabled="true">
+		<ers-panel-header>
+			Update Employee
+		</ers-panel-header>
+		<ers-panel-body>
+			<form>
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input type="text" class="form-control" id="name" placeholder="Name" ng-model="ctrl.employee.content.name">
+				</div>
+				<div class="form-group">
+					<label for="title">Title</label>
+					<select class="form-control" id="title" name="title" ng-model="ctrl.employee.content.title">
+						<option value="Managing Director">Managing Director</option>
+						<option value="Senior Director">Senior Director</option>
+						<option value="Director">Director</option>
+						<option value="Asc Director">Asc Director</option>
+						<option value="Software Engineer">Software Engineer</option>
+						<option value="QA Engineer">QA Engineer</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="location">Location</label>
+					<select class="form-control" id="location" name="location" ng-model="ctrl.employee.content.location">
+						<option value="San Francisco">San Francisco</option>
+						<option value="New York">New York</option>
+						<option value="Grenoble">Grenoble</option>
+						<option value="Singapore">Singapore</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="gender">Gender</label>
+					<select class="form-control" id="gender" name="gender" ng-model="ctrl.employee.content.gender">
+						<option value="male">Male</option>
+						<option value="female">Female</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="reportsTo">Reports To</label>
+					<select class="form-control" id="reportsTo" name="reportsTo" ng-model="ctrl.employee.reportsTo">
+						<option value="">None</option>
+						<option ng-repeat="node in ctrl.nodes" value="{{node.id}}">{{node.content.name}}</option>
+					</select>
+				</div>
+				<button type="button" class="btn btn-primary" ng-click="ctrl.onUpdatedLocal()">Update</button>
+				<button type="button" class="btn btn-default" ng-click="ctrl.onCancelLocal()">Cancel</button>
+				<button type="button" class="btn btn-default pull-right" ng-click="ctrl.onDeletedLocal()">Delete</button>
+			</form>
+		</ers-panel-body>
+	</ers-panel>
+</div>

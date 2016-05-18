@@ -1,0 +1,114 @@
+<div>
+    <script type="text/ng-template" id="createStructureModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Create a New Source File Structure</h3>
+        </div>
+        <div class="modal-body">
+            <form id="createStructureForm" name="createStructureForm" class="form-horizontal" novalidate>
+                <div class="form-group">
+                    <ers-label value="Structure Name" class="col-sm-3 control-label" ng-required="true" style="margin-top:4px"></ers-label>
+                    <ers-textbox name="name" class="col-sm-9" ng-required="true" ng-model="newStructure.name"></ers-textbox>
+                </div>
+                <div class="form-group">
+                    <ers-label value="Description" class="col-sm-3 control-label" style="margin-top:4px"></ers-label>
+                    <div class="col-sm-9">
+                        <textarea class="form-control" rows="3" name="description" style="margin-top:8px" ng-model="newStructure.description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <ers-label value="File Format" class="col-sm-3 control-label" ng-required="true" style="margin-top:4px"></ers-label>
+                    <div class="col-sm-9">
+                        <select class="form-control" style="margin-top:8px" ng-model="newStructure.fileFormat" ng-required="true">
+                            <option>CSV</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <ers-label value="Value Separator" class="col-sm-3 control-label" ng-required="true" style="margin-top:4px"></ers-label>
+                    <ers-textbox name="valueSeparator" class="col-sm-9" ng-required="true" style="margin-top:8px" ng-model="newStructure.valueSeparator"></ers-textbox>
+                </div>
+                <div class="form-group">
+                    <ers-label value="Decimal Separator" class="col-sm-3 control-label" ng-required="true" style="margin-top:4px"></ers-label>
+                    <ers-textbox name="decimalSeparator" class="col-sm-9" ng-required="true" style="margin-top:8px" ng-model="newStructure.decimalSeparator"></ers-textbox>
+                </div>
+                <div class="form-group">
+                    <ers-label value="Field Separator" class="col-sm-3 control-label" ng-required="true" style="margin-top:4px"></ers-label>
+                    <ers-textbox name="fieldSeparator" class="col-sm-9" ng-required="true" style="margin-top:8px" ng-model="newStructure.fieldSeparator"></ers-textbox>
+                </div>
+                <div class="form-group">
+                    <ers-label value="Record Separator" class="col-sm-3 control-label" ng-required="true" style="margin-top:4px"></ers-label>
+                    <ers-textbox name="recordSeparator" class="col-sm-9" ng-required="true" style="margin-top:8px" ng-model="newStructure.recordSeparator"></ers-textbox>
+                </div>
+                <div class="form-group">
+                    <ers-label value="Date Format" class="col-sm-3 control-label" ng-required="true" style="margin-top:4px"></ers-label>
+                    <ers-textbox name="dateFormat" class="col-sm-9" ng-required="true" style="margin-top:8px" ng-model="newStructure.dateFormat"></ers-textbox>
+                </div>
+                <div class="form-group">
+                    <ers-button class="primary" style="float:right;margin-left:8px" type="submit" form="createStructureForm" ng-click="ok(false)">Create Structure</ers-button>
+                    <ers-button class="primary" style="float:right;margin-left:8px" type="submit" form="createStructureForm" ng-click="ok(true)">Create & Open Structure Details</ers-button>
+                    <button type="button" class="btn btn-link" style="float:right" ng-click="cancel()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </script>
+
+    <script type="text/ng-template" id="assignStructureModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Assign File Structure</h3>
+        </div>
+        <div class="modal-body">
+            <form id="assignStructureForm" name="createStructureForm" class="form-horizontal" novalidate>
+                <div class="form-group">
+                    <ers-label class="col-sm-12 italic-label" value="Available file structures for a {{type}} file"></ers-label>
+                </div>
+                <div class="form-group">
+                    <ers-label class="col-sm-3" value="Structure"></ers-label>
+                    <ers-dropdown-select class="col-sm-8" ng-required="true" dropdown-select-type="standard" filter-mode="auto" items="structures"
+                    item-display-property="name" placeholder="Select a Structure" ng-change="structureChanged(itemSelected)"
+                    ng-model="selectedStructure">
+                    </ers-drodpwon-select>
+                </div>
+
+                <div class="form-group">
+                    <ers-button class="primary" style="float:right;margin-left:8px" type="submit" form="assignStructureForm" ng-click="submit(false)">Apply</ers-button>
+                    <ers-button class="primary" style="float:right;margin-left:8px" type="submit" form="assignStructureForm" ng-click="submit(true)">Apply & Open Structure Details</ers-button>
+                    <button type="button" class="btn btn-link" style="float:right" ng-click="cancel()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </script>
+
+    <h2 style="margin: 0px 0px 20px;">Unstructured Files <font style="color:#999999; font-size: 18px">Data Lake</font></h2>
+
+    <ers-panel heading="" collapsible="false">
+        <ers-panel-body>
+            <div>
+                <div class="row" ng-show="!ctrl.showWorkspace">
+                    <div class="col-sm-2">
+                        <ers-label value="Current Directory Path:"></ers-label>
+                    </div>
+                    <div class="col-sm-10">
+                        <ers-dropdown-select dropdown-select-type="standard" filter-mode="auto" items="ctrl.workspaces" item-display-property="path"
+                        placeholder="Select Workspace" ng-change="ctrl.workspaceChanged(itemSelected)" ng-model="ctrl.selectedWorkspace">
+                        </ers-dropdown-select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <ers-toolbar direction="horizontal">
+                        <ers-button class="secondary pull-left" ng-show="!ctrl.showWorkspace" ng-disabled="ctrl.gridOptionsDataSet.api.getSelectedRows()==='undefined' || ctrl.gridOptionsDataSet.api.getSelectedRows().length<1"
+                        ng-click="ctrl.showAssignStructureModal()">Assign Structure</ers-button>
+                        <ers-button class="secondary" ng-show="!ctrl.showWorkspace" ng-click="ctrl.showCreateStructureModal()" ng-disabled="ctrl.selectOnlyOneRow()">Create New Structure</ers-button>
+                    </ers-toolbar>
+                </div>
+
+            </div>
+
+            <ers-grid ng-if="ctrl.showWorkspace" options="ctrl.gridOptionsWorkspace" style="height:325px;width:100%">
+            </ers-grid>
+
+            <ers-grid ng-if="!ctrl.showWorkspace" options="ctrl.gridOptionsDataSet" style="height:325px;width:100%">
+            </ers-grid>
+        </ers-panel-body>
+    </ers-panel>
+</div>

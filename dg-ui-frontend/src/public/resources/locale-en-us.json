@@ -1,0 +1,5 @@
+{
+	"components.localization.language": "English",
+	"components.localization.greeting": "Hello",
+	"components.localization.sentence": "This is a sentence."
+}

@@ -1,0 +1,23 @@
+<div class="layoutWrapper">
+    <h1 class="page-title">Tag Sample</h1>
+    <div class="row" >
+        <div class="col-md12" ng-init="ctrl.loadListLines()">
+
+            <ers-button class="primary" ng-click="ctrl.loadListLines()">Load Lines</ers-button>
+            </br>
+            <ers-dropdown-select ng-show="ctrl.linesLoaded" items="ctrl.lines" item-display-property="longName" ng-change="ctrl.loadJsonForLine(itemSelected)" ng-model="ctrl.currentLine">
+            </ers-dropdown-select>
+
+            <ers-dropdown-select ng-show="ctrl.dataLoaded" items="ctrl.directionList" ng-change="ctrl.onDirectionChanged(itemSelected)" ng-model="ctrl.currentDirection">
+            </ers-dropdown-select>
+
+            <div ng-if="!ctrl.dataLoaded">
+                <ers-icon name="processing" ng-disabled="ctrl.disabled"></ers-icon>
+            </div>
+            <div class="gridWrapper" style="width: 100%; height: 100%;">
+                <ers-grid options="ctrl.gridOptions" class="basic-grid" style="height: 100%;" ></ers-grid>
+            </div>
+
+        </div>
+    </div>
+</div>

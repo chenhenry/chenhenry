@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-md-8">
+		<ers-panel>
+			<ers-panel-header>
+				Workflow Example 1 (RiskFoundation)
+			</ers-panel-header>
+			<ers-panel-body>
+				<form class="form-inline">
+					<input type="text" placeholder="Search" ng-model="ctrl.searchInput" ng-change="ctrl.filter()" class="form-control" />
+					<button class="btn btn-success pull-right" ng-click="ctrl.createNode()">Create Node</button>
+				</form>
+			</ers-panel-body>
+			<ers-panel-body>
+				<graph nodes="ctrl.filteredNodes" edges="ctrl.edges" height="250" direction="LR" selected-node="ctrl.node" on-selected="ctrl.onNodeSelected(id)"
+				selected-edge="ctrl.edge" on-edge-selected="ctrl.onEdgeSelected(edge)">
+				</graph>
+			</ers-panel-body>
+		</ers-panel>
+	</div>
+	<div class="col-md-4">
+		<edit-node node="ctrl.node" edges="ctrl.childEdges" nodes="ctrl.nodes" on-updated="ctrl.onNodeUpdated(node, childEdges)"
+		on-deleted="ctrl.onNodeDeleted(id)" on-cancel="ctrl.onNodeCancel()" on-create-child="ctrl.onNodeCreateChild(id)"></edit-node>
+		<edit-edge edge="ctrl.edge" on-update="ctrl.onEdgeUpdate(edge)" on-delete="ctrl.onEdgeDelete(edge)" on-cancel="ctrl.onEdgeCancel()"></edit-edge>
+	</div>
+</div>

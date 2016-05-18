@@ -1,0 +1,23 @@
+<div>
+	<ers-panel>
+		<ers-panel-header>
+			Random Fruit
+			<div class="btn-group pull-right">
+				<button class="btn btn-icon" ng-click="ctrl.refresh()" title="Refresh"><i class="fa fa-refresh"></i></button>
+			</div>
+		</ers-panel-header>
+		<ers-panel-body>
+			<div ng-if="!ctrl.loading">
+				<ul class="list-group" style="margin-bottom: 0;">
+					<li class="list-group-item" ng-repeat="item in ctrl.words">
+						{{item}}
+					</li>
+				</ul>
+			</div>
+			<div class="loading-container" ng-if="ctrl.loading">
+				<div class="loading">
+				</div>
+			</div>
+		</ers-panel-body>
+	</ers-panel>
+</div>

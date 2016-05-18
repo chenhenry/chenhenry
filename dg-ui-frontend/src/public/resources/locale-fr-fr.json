@@ -1,0 +1,5 @@
+{
+    "components.localization.language": "Français",
+	"components.localization.greeting": "Salut",
+	"components.localization.sentence": "Ceci est une phrase."
+}

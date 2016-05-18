@@ -1,0 +1,49 @@
+<div ng-show="ctrl.node">
+	<ers-panel ng-disabled="true">
+		<ers-panel-header>
+			Edit Node ({{ctrl.node.id}})
+		</ers-panel-header>
+		<ers-panel-body>
+			<form>
+				<div class="form-group">
+					<label for="label">Label:</label>
+					<input id="label" type="text" class="form-control" placeholder="None" ng-model="ctrl.node.content.text" />
+				</div>
+				<div class="form-group">
+					<label for="shape">Shape:</label>
+					<select id="shape" class="form-control" ng-model="ctrl.node.shape">
+						<option value="rect">Rectangle</option>
+						<option value="ellipse">Ellipse</option>
+						<option value="diamond">Diamond</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="class">Class:</label>
+					<input id="class" type="text" class="form-control" placeholder="None" ng-model="ctrl.node.class" />
+				</div>
+				<div class="form-group">
+					<button type="button" class="btn btn-default" ng-click="ctrl.onCreateEdgeLocal()">Create Edge</button>
+					<button type="button" class="btn btn-default" ng-click="ctrl.onCreateChildLocal()">Create Child Node</button>
+				</div>
+				<div class="form-group" ng-repeat="edge in ctrl.edges">
+					<div class="row">
+						<div class="col-sm-9">
+							<select class="form-control" ng-model="edge.to">
+								<option ng-repeat="node in ctrl.nodes" value="{{node.id}}" ng-selected="node.id == edge.to">{{node.id}} - {{node.content.text}}</option>
+							</select>
+						</div>
+						<div class="col-sm-3">
+							<button type="button" class="btn btn-link" style="padding-left: 0" ng-click="ctrl.onDeleteEdgeLocal(edge)">Delete</button>
+						</div>
+					</div>
+				</div>
+				<hr />
+				<div>
+					<button type="button" class="btn btn-primary" ng-click="ctrl.onUpdatedLocal()">Update</button>
+					<button type="button" class="btn btn-default" ng-click="ctrl.onCancelLocal()">Cancel</button>
+					<button type="button" class="btn btn-default pull-right" ng-click="ctrl.onDeletedLocal()">Delete</button>
+				</div>
+			</form>
+		</ers-panel-body>
+	</ers-panel>
+</div>

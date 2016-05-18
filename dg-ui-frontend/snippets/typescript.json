@@ -1,0 +1,70 @@
+{
+	/*
+	 // Place your snippets for TypeScript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
+	 // Example:
+	 "Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+*/
+	"Create Component": {
+		"prefix": "component",
+		"body": [
+			"import * as angular from 'angular';",
+			"",
+			"var component = angular.module('app.components.${mycomponent}', [])",
+			"\t.directive('${mycomponent}', [function() {",
+			"\t\treturn {",
+			"\t\t\trestrict: 'E',",
+			"\t\t\treplace: true,",
+			"\t\t\tscope: {},",
+			"\t\t\tbindToController: {},",
+			"\t\t\tcontroller: function() {",
+			"\t\t\t\tvar ctrl = this;",
+			"\t\t\t},",
+			"\t\t\tcontrollerAs: 'ctrl',",
+			"\t\t\ttemplate: require('./${mycomponent}.html')",
+			"\t\t};",
+			"\t}]).name;",
+			"",
+			"export = component;",
+			""
+		],
+		"description": "Creates a new angular 1.x component"
+	},
+	"Create Service": {
+		"prefix": "service",
+		"body": [
+			"import * as angular from 'angular';",
+			"",
+			"angular.module('app.services.${myservice}', [])",
+			"\t.factory('${myservice}', ['$timeout',",
+			"\t\tfunction($timeout: angular.ITimeoutService) {",
+			"\t\t\treturn new ${MyService}($timeout);",
+			"\t\t}",
+			"\t]);",
+			"",
+			"export default class ${MyService} {",
+			"\tprivate $timeout: angular.ITimeoutService;",
+			"",
+			"\tconstructor($timeout: angular.ITimeoutService) {",
+			"\t\tthis.$timeout = $timeout;",
+			"\t}",
+			"",
+			"\tpublic exampleMethod() {",
+			"\t\treturn this.$timeout(() => {",
+			"\t\t\treturn 'Hello World';",
+			"\t\t}, Math.floor(Math.random() * 2000) + 500);",
+			"\t}",
+			"}",
+			""
+		],
+		"description": "Creates a new angular 1.x component"
+	}
+}

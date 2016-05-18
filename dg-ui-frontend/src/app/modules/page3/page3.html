@@ -1,0 +1,172 @@
+<div>
+	<h1 class="page-title">Localization/Internationalization</h1>
+	<div class="row">
+		<div class="col-md-6">
+			<ers-panel ng-disabled="true">
+				<ers-panel-header>
+					Example
+				</ers-panel-header>
+				<ers-panel-body>
+					<form>
+						<div class="row">
+							<div class="col-sm-4">
+								<div class="form-group">
+									<language-selector></language-selector>
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group">
+									<label>Number:</label>
+									<input ng-model="ctrl.numberExample" class="form-control" />
+								</div>
+							</div>
+							<div class="col-sm-4">
+								<div class="form-group">
+									<label>Date:</label>
+									<!--<input type="date" ng-model="ctrl.dateExample" class="form-control" />-->
+									<!--<uib-datepicker ng-model="ctrl.dateExample" show-weeks="false"></uib-datepicker>-->
+									<ers-calendar ng-model="ctrl.dateExample" />
+								</div>
+							</div>
+						</div>
+					</form>
+				</ers-panel-body>
+			</ers-panel>
+			<ers-panel ng-disabled="true">
+				<ers-panel-header>
+					Localization
+				</ers-panel-header>
+				<ers-panel-body>
+					<div class="table-responsive">
+						<p>Current Language: {{"components.localization.language" | translate}}</p>
+						<table class="table table-striped table-bordered table-center-text">
+							<thead>
+								<tr>
+									<th>
+										Resource
+									</th>
+									<th>
+										Value
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>components.localization.language</td>
+									<td>{{"components.localization.language" | translate}}</td>
+								</tr>
+								<tr>
+									<td>components.localization.greeting</td>
+									<td>{{"components.localization.greeting" | translate}}</td>
+								</tr>
+								<tr>
+									<td>components.localization.sentence</td>
+									<td>{{"components.localization.sentence" | translate}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</ers-panel-body>
+			</ers-panel>
+		</div>
+		<div class="col-md-6">
+			<ers-panel ng-disabled="true">
+				<ers-panel-header>
+					Internationalization
+				</ers-panel-header>
+				<ers-panel-body>
+					<!--<p>Current Locale: {{ctrl.currentLocale}}</p>-->
+					<div class="table-responsive">
+						<table class="table table-striped table-bordered table-center-text">
+							<thead>
+								<tr>
+									<th>
+										Example
+									</th>
+									<th>
+										Filter
+									</th>
+									<th>
+										Value
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Number</td>
+									<td>number</td>
+									<td>{{ctrl.numberExample | number}}</td>
+								</tr>
+								<tr>
+									<td>Number Decimals</td>
+									<td>number:2</td>
+									<td>{{ctrl.numberExample | number:2}}</td>
+								</tr>
+								<tr>
+									<td>Local Currency</td>
+									<td>currency</td>
+									<td>{{ctrl.numberExample | currency}}</td>
+								</tr>
+								<tr>
+									<td>Specific Currency</td>
+									<td>currency:"$"</td>
+									<td>{{ctrl.numberExample | currency:"$"}}</td>
+								</tr>
+								<tr>
+									<td>Specific Currency Decimals</td>
+									<td>currency:"USD$":0</td>
+									<td>{{ctrl.numberExample | currency:"USD$":0}}</td>
+								</tr>
+								<tr>
+									<td>Short Date</td>
+									<td>date: 'shortDate'</td>
+									<td>{{ctrl.dateExample | date: 'shortDate'}}</td>
+								</tr>
+								<tr>
+									<td>Date</td>
+									<td>date</td>
+									<td>{{ctrl.dateExample | date}}</td>
+								</tr>
+								<tr>
+									<td>Medium Date</td>
+									<td>date: 'mediumDate'</td>
+									<td>{{ctrl.dateExample | date: 'mediumDate'}}</td>
+								</tr>
+								<tr>
+									<td>Long Date</td>
+									<td>date: 'longDate'</td>
+									<td>{{ctrl.dateExample | date: 'longDate'}}</td>
+								</tr>
+								<tr>
+									<td>Full Date</td>
+									<td>date: 'fullDate'</td>
+									<td>{{ctrl.dateExample | date: 'fullDate'}}</td>
+								</tr>
+								<tr>
+									<td>Medium Date + Time</td>
+									<td>date: 'medium'</td>
+									<td>{{ctrl.dateExample | date: 'medium'}}</td>
+								</tr>
+								<tr>
+									<td>Short Date + Time</td>
+									<td>date: 'short'</td>
+									<td>{{ctrl.dateExample | date: 'short'}}</td>
+								</tr>
+								<tr>
+									<td>Medium Time</td>
+									<td>date: 'mediumTime'</td>
+									<td>{{ctrl.dateExample | date: 'mediumTime'}}</td>
+								</tr>
+								<tr>
+									<td>Short Time</td>
+									<td>date: 'shortTime'</td>
+									<td>{{ctrl.dateExample | date: 'shortTime'}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</ers-panel-body>
+			</ers-panel>
+		</div>
+	</div>
+</div>

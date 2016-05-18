@@ -1,0 +1,24 @@
+<div>
+    <div ers-drawer ers-drawer-from="right" ers-drawer-max-width-size="500px" ers-drawer-max-height-size="340px" ers-drawer-pinned="false"
+    ers-drawer-label="Selected Data Source" ers-drawer-collapsed="ctrl.catalog_collapsed">
+        <ers-panel class="ers-panel-maximized" heading="" collapsible="false">
+            <ers-panel-header>
+                {{ctrl.drawerPanelHeader}}
+            </ers-panel-header>
+            <ers-panel-body>
+
+                <div class="clearfix margin-bottom-default" ng-show="ctrl.selectedDataSource">
+                    
+                    <button class="btn btn-link" ng-click="ctrl.goBackToDataSourceList()">&#10094; Change Data Source</button>
+                    
+                    <ers-button class="secondary pull-right" ng-show="ctrl.selectedDataSource.type==='hdfs'" ng-click="ctrl.goToUnstructuredFiles()">Unstructured Files</ers-button>
+                </div>
+                <div class="clearfix"></div>
+                
+                <ers-grid options="ctrl.gridOptions"></ers-grid>
+
+            </ers-panel-body>
+        </ers-panel>
+
+    </div>
+</div>

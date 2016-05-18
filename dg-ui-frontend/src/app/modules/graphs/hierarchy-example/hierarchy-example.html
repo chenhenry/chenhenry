@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col-md-8">
+		<ers-panel>
+			<ers-panel-header>
+				Hierarchy Example (Organizational Chart)
+			</ers-panel-header>
+			<ers-panel-body>
+				<graph nodes="ctrl.nodes" edges="ctrl.edges" selected-node="ctrl.employee" on-selected="ctrl.onEmployeeSelected(id)"
+				height="400">
+				</graph>
+			</ers-panel-body>
+		</ers-panel>
+	</div>
+	<div class="col-md-4">
+		<!--<employee-list data-nodes="ctrl.nodes" data-selected-node="ctrl.selectedEmployee()" data-on-selected="ctrl.onEmployeeSelected(id)">
+			</employee-list>-->
+		<employee-details employee="ctrl.employee" nodes="ctrl.nodes" on-updated="ctrl.onEmployeeUpdated(employee)" on-deleted="ctrl.onEmployeeDeleted(id)"
+		on-cancel="ctrl.onEmployeeCancel()">
+		</employee-details>
+	</div>
+</div>

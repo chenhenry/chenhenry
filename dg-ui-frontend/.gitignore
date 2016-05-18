@@ -1,0 +1,23 @@
+# OS generated files #
+Thumbs.db
+
+# Node Files #
+/node_modules
+/bower_components
+
+# Dist #
+/dist
+.tmp
+
+# IDE #
+.idea/
+
+# Logs
+logs
+*.log
+
+# typescript generated files
+src/app/**/*.js
+src/app/**/*.map
+test/**/*.js
+test/**/*.map

@@ -1,0 +1,66 @@
+<div class="layoutWrapper">
+    <h1 class="page-title">Reporting Universes</h1>
+    <div class="row" >
+        <div class="col-md-6">
+            <ers-panel>
+                <ers-panel-header>
+                    Reporting Universe
+                </ers-panel-header>
+                <ers-panel-body>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Created by</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="u in ctrl.reportingUniverses">
+                            <td>{{u.name}}</td>
+                            <td>{{u.description}}</td>
+                            <td>{{u.creator}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </ers-panel-body>
+            </ers-panel>
+            <ers-panel>
+                <ers-panel-header>
+                    New Reporting Universe
+                </ers-panel-header>
+                <ers-panel-body>
+                    <br>
+                    <form class="form-horizontal" id="formBasicUsage" name="formBasicUsage" novalidate ers-form="ctrl.submit()">
+                        <div class="form-group">
+                            <ers-label ng-required="true" value="Universe name:" class="col-sm-3 control-label"></ers-label>
+                            <ers-textbox name="universeNameTextBox" ng-model="ctrl.model.universeName" ng-required="true" ng-maxlength="50"
+                                     class="col-sm-9"></ers-textbox>
+                        </div>
+
+                        <div class="form-group">
+                            <ers-label ng-required="true" value="Universe description:" class="col-sm-3 control-label"></ers-label>
+                            <ers-textbox name="universeDescTextBox" ng-model="ctrl.model.universeDesc" ng-required="true" ng-maxlength="200"
+                                         class="col-sm-9"></ers-textbox>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <ers-button class="primary" type="submit" form="formBasicUsage">Create the Universe !
+                                </ers-button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <ers-button type="reset">Reset</ers-button>
+                            </div>
+                        </div>
+
+                    </form>
+                </ers-panel-body>
+            </ers-panel>
+        </div>
+    </div>
+</div>
