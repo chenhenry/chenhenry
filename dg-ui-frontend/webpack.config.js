@@ -53,7 +53,7 @@ module.exports = {
 	
 	//Fix for node fs module
 	node: {
-		fs: "empty"
+		fs: "empty" 
 	},
 
     // Output

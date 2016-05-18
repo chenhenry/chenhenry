@@ -8,12 +8,12 @@ angular.module('app').config([
     function($stateProvider: IStateProvider,
         $urlRouterProvider: IUrlRouterProvider) {
 
-        $urlRouterProvider.when('/datalab', '/datalab/mapping');
+        $urlRouterProvider.when('/dg', '/dg/client');
 
         $stateProvider
-            .state('datalab', {
-                url: '/datalab',
-                template: '<datalab></datalab>',
+            .state('dg', {
+                url: '/dg',
+                template: '<dg></dg>',
                 data : {
                     menu: {
                         name: 'Data Labs',
@@ -21,12 +21,12 @@ angular.module('app').config([
                         showSubmenu: true
                     }
                 }
-            }).state('datalab.mapping', {
-                url: '/mapping',
-                template: '<mapping></mapping>',
+            }).state('dg.client', {
+                url: '/client',
+                template: '<client></client>',
                 data : {
                     menu: {
-                        name: 'Mapping & Transformation'
+                        name: '客户管理'
                     }
                 }
             });

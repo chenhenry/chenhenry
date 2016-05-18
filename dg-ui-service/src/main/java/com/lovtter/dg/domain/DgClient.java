@@ -40,6 +40,10 @@ public class DgClient {
   @Column(name = "update_time")
   private Date updateTime;
 
+//  @OneToMany(mappedBy = "dgClient", cascade = CascadeType.ALL, orphanRemoval = true)
+//  @JsonIgnore
+//  private List<DgOrder> dgOrders;
+
   public static long getSerialVersionUID() {
     return serialVersionUID;
   }

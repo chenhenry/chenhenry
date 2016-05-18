@@ -42,6 +42,6 @@ import '../modules/page4/page4.routes';
 // Module Specific Routes
 import '../modules/settings/settings.routes';
 import '../modules/reporting-studio/reporting-studio.routes';
-import '../modules/storage/storage.routes';
-import '../modules/datalab/datalab.routes';
+//import '../modules/storage/storage.routes';
+import '../modules/dg/dg.routes';
 

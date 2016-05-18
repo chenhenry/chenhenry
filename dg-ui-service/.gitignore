@@ -1,0 +1,6 @@
+target
+.idea
+.settings
+src/main/resources/static/
+**/*.iml
+*.log

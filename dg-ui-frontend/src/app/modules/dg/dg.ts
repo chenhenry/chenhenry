@@ -1,11 +1,11 @@
 import * as angular from 'angular';
-import './mapping/mapping';
+import './client/client';
  
-var component = angular.module('app.modules.datalab', [
+var component = angular.module('app.modules.dg', [
     'ers.components.all',
-    'app.modules.datalab.mapping'
+    'app.modules.dg.client'
 ])
-    .directive('datalab', function() {
+    .directive('dg', function() {
         return {
             replace: true,
             restrict: 'E',
@@ -16,7 +16,7 @@ var component = angular.module('app.modules.datalab', [
                 var ctrl = this;
             },
             controllerAs: 'ctrl',
-            template: require('./datalab.html')
+            template: require('./dg.html')
         }
     }).name;
 

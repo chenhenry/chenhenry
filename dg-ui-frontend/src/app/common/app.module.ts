@@ -37,8 +37,7 @@ import 'modules/page3/page3';
 import 'modules/page4/page4';
 import 'modules/settings/settings';
 import 'modules/reporting-studio/reporting-studio';
-import 'modules/storage/storage';
-import 'modules/datalab/datalab';
+import 'modules/dg/dg';
 import './endpoints';
 import {CONSTANTS} from "./constants";
 
@@ -65,18 +64,10 @@ function getAppModules(): string[] {
 
     var atlasAppModules = [
         'app.modules.reporting-studio',
-        'app.modules.storage',
-        'app.modules.datalab'];
+        'app.modules.dg'];
 
     var allModules = requiredModules.concat(atlasAppModules);
-
-    if (CONSTANTS.atlas.ui.frontendOnly) {
-        console.log("include sample modules");
-        allModules = allModules.concat(uxSampleModules);
-    }
-    else {
-        console.log("production, no sample code");
-    }
+    allModules = allModules.concat(uxSampleModules);
 
 
     return allModules;
