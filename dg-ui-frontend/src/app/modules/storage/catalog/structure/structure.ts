@@ -34,7 +34,7 @@ var component = angular.module('app.modules.storage.catalog.structure', [
                         headerName: "Data Format",
                         field: "files"
                     },
-                    {
+                    { 
                         headerName: "Description",
                         field: "structure"
                     }

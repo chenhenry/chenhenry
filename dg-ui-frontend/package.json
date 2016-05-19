@@ -1,13 +1,9 @@
 {
-    "name": "atlas-ui-frontend",
+    "name": "dg-ui-frontend",
     "version": "0.1.0",
-    "description": "Atlas UI frontend project",
+    "description": "dg UI frontend project",
     "author": "Serge Agroskin <serge.agroskin@moodys.com>",
     "homepage": "https://project",
-    "repository": {
-        "type": "git",
-        "url": "http://sf1-lbersgit101:7990/projects/ATLAS/repos/atlas-ui-app/browse"
-    },
     "bugs": {
         "url": "http://galileo"
     },

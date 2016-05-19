@@ -12,14 +12,37 @@ ClientResourceModule.config(['$resourceProvider', function($resourceProvider) {
 ClientResourceModule.factory("ClientResource", ["$resource", "endpoints", function($resource: angular.resource.IResourceService, endpoints: {}) {
     var endpoint: String = endpoints["dg"];
     return $resource(endpoint + "/lovtter/dg/client/:id", null, {
-        find: {
+        findAll: {
+            url: endpoint + "/lovtter/dg/client/",
+            method: "GET",
+            isArray: true
+        },
+        findById: {
             url: endpoint + "/lovtter/dg/client/:id",
             method: "GET",
             isArray: true,
             params: {
                 id: "@id"
             }
-        }
+        },
+        createClient: {
+            url: endpoint + "/lovtter/dg/client/",
+            method: "POST"
+        },
+        updateClient: {
+            url: endpoint + "/lovtter/dg/client/:id",
+            method: "PUT",
+            params: {
+                id: '@id'
+            }
+        },
+        deleteClient: {
+            url: endpoint + "/lovtter/dg/client/:id",
+            method: "DELETE",
+            params: {
+                id: "@id"
+            }
+        },
     });
 }]);
 

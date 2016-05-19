@@ -1,94 +1,40 @@
 <div>
-    <h1 class="page-title">Mapping & Transformation</h1>
-
+    <h1 class="page-title">Client Management</h1>
     <div class="row">
-        <div class="col-md-4 col-lg-3 col-xlg-2">
+        <div class="col-md-5 col-lg-5 col-xlg-4">
             <ers-panel collapsible="false">
-                <ers-panel-header>Attributes</ers-panel-header>
-                <div class="list-group border-top">
-                    <a href="javascript:void(0)" ng-click="ctrl.loadAttributeDetails(attribute);" class="list-group-item" ng-repeat="attribute in ctrl.attributes"
-                    ng-init="($first) ? ctrl.loadAttributeDetails(attribute) : ''" ng-class="{'active' : attribute.id === ctrl.selectedAttribute}">{{attribute.label}}</a>
-                </div>
-                <div class="loading-container" ng-if="ctrl.attributesLoading">
-                    <div class="loading">
+                <ers-panel-header>Client Detail</ers-panel-header>
+                <ers-panel-body>
+                    <div class="form-group">
+                        <ers-toolbar>
+                            <ers-icon name="edit" ng-click="ctrl.enableEdit()" ng-disabled="ctrl.isEditing"></ers-icon>
+                            <ers-toolbar-separator></ers-toolbar-separator>
+                            <ers-icon name="save" ng-click="ctrl.submit()" type="submit" form="formSample" ng-disabled="!ctrl.isEditing"></ers-icon>
+                            <ers-icon name="cancel" ng-click="ctrl.cancelEdit()" ng-disabled="!ctrl.isEditing"></ers-icon>
+                        </ers-toolbar>
                     </div>
-                </div>
+                    <div>
+                        <form class="form-horizontal" id="formSample" name="formSample" novalidate ers-form="ctrl.submit()">
+                            <div class="form-group">
+                                <ers-label value="Label:" class="col-sm-4 control-label"></ers-label>
+                                <ers-textbox ng-model="ctrl.client.name" ng-maxlength="100" class="col-sm-6"></ers-textbox>
+                            </div>
+                            <div class="form-group">
+                                <ers-label value="Type:" class="col-sm-4 control-label"></ers-label>
+                                <ers-textbox ng-model="ctrl.client.address" ng-maxlength="100" class="col-sm-6"></ers-textbox>
+                            </div>
+                            <div class="form-group">
+                                <ers-label value="Type:" class="col-sm-4 control-label"></ers-label>
+                                <ers-textbox ng-model="ctrl.client.phone" ng-maxlength="100" class="col-sm-6"></ers-textbox>
+                            </div>
+                        </form>
+                    </div>
+                </ers-panel-body>
             </ers-panel>
         </div>
-        <div class="col-md-8 col-lg-9 col-xlg-6">
-            <ers-panel header="General Information">
-                <form class="form-horizontal" ng-if="!ctrl.attributeDetailsLoading">
-                    <div class="form-group">
-                        <label class="col-sm-2 text-right">Name:</label>
-                        <span class="col-sm-10">{{ctrl.attributeDetails.code}}</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 text-right">Label:</label>
-                        <span class="col-sm-10">{{ctrl.attributeDetails.label}}</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 text-right">Type:</label>
-                        <span class="col-sm-10">{{ctrl.attributeDetails.data_type}}</span>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 text-right">Description:</label>
-                        <span class="col-sm-10">{{ctrl.attributeDetails.description}}</span>
-                    </div>
-                </form>
-                <div class="loading-container" ng-if="ctrl.attributeDetailsLoading">
-                </div>
-            </ers-panel>
-
-            <ers-panel header="Expressions">
-                <form ng-if="!ctrl.expressionLoading">
-                    <div class="form-group margin-bottom-default">
-                        <!--Expression Edit Toolbar-->
-                        <div style="height: 20px;">
-                            <ers-icon name="add" ng-click="ctrl.toggleExpressionEditMode()" ng-disabled="ctrl.selectedAttribute === undefined" ng-show="!ctrl.hasExpression"></ers-icon>
-                            <ers-icon name="edit" ng-click="ctrl.toggleExpressionEditMode()" ng-disabled="ctrl.selectedAttribute === undefined" ng-show="ctrl.hasExpression"></ers-icon>
-                            <ers-icon name="save" ng-click="ctrl.processExpressionEdit()" ng-disabled="!ctrl.expressionEditMode"></ers-icon>
-                            <ers-icon name="trash" ng-click="ctrl.deleteExpression()" ng-disabled="!ctrl.hasExpression || !ctrl.expressionEditMode"></ers-icon>
-                        </div>
-
-                        <!--Expression Edit Box-->
-                        <textarea ng-model="ctrl.expressionParameter" ng-readonly="!ctrl.expressionEditMode" class="form-control" rows="5"></textarea>
-
-                    </div>
-
-                </form>
-                <div class="loading-container" ng-if="ctrl.expressionLoading">
-                    <div class="loading">
-                    </div>
-                </div>
-
-            </ers-panel>
-
-            <ers-panel>
-
-                <ers-panel-header>
-                    Data Catalog
-                </ers-panel-header>
-
-                <ers-panel-body ng-if="!ctrl.attributeDataassetsLoading">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <label>Data Assets:</label>
-                            <ers-dropdown-select items="ctrl.attributeDataassets" use-search-icon="true" item-display-property="name" ng-model="ctrl.attributeDataasset"
-                            ng-change="ctrl.selectDataAsset(itemSelected)" class="margin-left-default form-group">
-                            </ers-dropdown-select>
-                        </div>
-                    </form>
-
-                    <ers-grid options="ctrl.gridOptions" class="margin-top-default">
-                    </ers-grid>
-
-                </ers-panel-body>
-
-                <div class="loading-container" ng-if="ctrl.attributeDataassetsLoading">
-                    <div class="loading">
-                    </div>
-                </div>
-
+        <div class="col-md-7 col-lg-7 col-xlg-8">
+            <ers-panel header="Client List">
+                <ers-grid options="ctrl.gridOptions" ng-style="{'height': ctrl.isDataLake ? '320px':'353px'}"></ers-grid>
             </ers-panel>
         </div>
     </div>

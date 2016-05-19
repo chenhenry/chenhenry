@@ -1,7 +1,7 @@
 export interface IClient{
-    id:number;
-    code:String;
-    label: String;
-    dataType:String;
+    id_dg_client:number;
+    name:String;
+    phone: String;
+    address:String;
     description: String;
 }

@@ -8,6 +8,10 @@ export interface IFindArg {
 export interface IClientResource extends IClient, angular.resource.IResource<IClient> {} 
 
 export interface IClientResource extends angular.resource.IResourceClass<IClientResource> {
-    find(arg: IFindArg, success:Function, error:Function):IClient[];
+    findAll(success:Function, error:Function):IClient[];
+    findById(id: String, success:Function, error:Function):IClient;
+    createClient(client:IClient);
+    updateClient(client: IClient, success:Function, error:Function): void;
+    deleteClient(id: String, success: Function, error: Function): void;
 }
 
