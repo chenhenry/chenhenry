@@ -5,12 +5,10 @@
                 <ers-panel-body>
                     <div class="form-group">
                         <ers-toolbar>
-                            <ers-icon name="edit" ng-click="ctrl.enableEdit()" ng-disabled="ctrl.isEditing"></ers-icon>
+                            <ers-icon name="add" ng-click="ctrl.addGood()"></ers-icon>
                             <ers-toolbar-separator></ers-toolbar-separator>
-                            <ers-icon name="save" ng-click="ctrl.submit()" type="submit" form="formSample" ng-disabled="!ctrl.isEditing"></ers-icon>
-                            <ers-icon name="cancel" ng-click="ctrl.cancelEdit()" ng-disabled="!ctrl.isEditing"></ers-icon>
                         </ers-toolbar>
-                        <ers-grid options="ctrl.gridOptions" style="height:450px"></ers-grid>
+                        <ers-grid options="ctrl.gridOptions" class="basic-grid" style="height:450px"></ers-grid>
                     </div>
                 </ers-panel-body>
             </ers-panel>

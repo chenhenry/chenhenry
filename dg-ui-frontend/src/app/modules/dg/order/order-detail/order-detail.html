@@ -1,0 +1,70 @@
+<div>
+    <ers-panel>
+        <ers-panel-header>
+            订单信息
+            <div class="btn-group pull-right">
+                <button class="btn btn-icon" ng-show="ctrl.isCreate" ng-click="ctrl.createOrder()" title="Create"><i class="fa fa-save"></i></button>
+                <button class="btn btn-icon" ng-show="!ctrl.isCreate" ng-click="ctrl.updateOrder()" title="Save"><i class="fa fa-save"></i></button>
+            </div>
+        </ers-panel-header>
+        <ers-panel-body>
+            <div>
+                <form class="form-horizontal" id="formSample" name="formSample" novalidate ers-form="ctrl.submit()">
+                    <div class="form-group">
+                        <ers-label value="Code:" class="col-sm-2 control-label"></ers-label>
+                        <ers-textbox ng-model="ctrl.code" ng-maxlength="100" class="col-sm-3"></ers-textbox>
+                        <ers-label value="Name:" class="col-sm-2 control-label"></ers-label>
+                        <ers-dropdown-select class="col-sm-3" ng-required="true" 
+                            dropdown-select-type="grid"
+                            filter-mode="auto"
+                            dropdown-select-type="standard" filter-mode="auto" items="ctrl.clients"
+                            item-display-property="name" placeholder="Select a client" 
+                            grid-column-headers="ctrl.clientItemColumns"
+                            ng-change="ctrl.onchangeofclient(itemSelected)" ng-model="ctrl.client"
+                            use-search-icon="true">
+                    </div>
+                    <div class="form-group">
+                        <ers-label value="totalSum:" class="col-sm-2 control-label"></ers-label>
+                        <ers-textbox ng-model="ctrl.totalSum" ng-maxlength="100" class="col-sm-3"></ers-textbox>
+                        <ers-label value="phone:" class="col-sm-2 control-label"></ers-label>
+                        <ers-textbox ng-model="ctrl.phone" ng-maxlength="100" class="col-sm-3"></ers-textbox>
+                    </div>
+                    <div class="form-group">
+                        <ers-label value="Address:" class="col-sm-2 control-label"></ers-label>
+                        <ers-textbox ng-model="ctrl.address" ng-maxlength="100" class="col-sm-8"></ers-textbox>
+                    </div>
+
+                </form>
+            </div>
+    </ers-panel>
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <ers-panel>
+                    <ers-panel-header>
+                        订单明细
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-icon" ng-click="ctrl.edit()" title="Refresh"><i class="fa fa-refresh"></i></button>
+                        </div>
+                    </ers-panel-header>
+                    <ers-panel-body>
+                        <div class="form-group">
+                                <ers-toolbar>
+                                    <ers-icon name="add" ng-click="ctrl.addItem()" ></ers-icon>
+                                    <ers-icon name="edit" ng-click="ctrl.edit()"></ers-icon>
+                                    <ers-icon name="delete" ng-click="ctrl.deleteItem()"></ers-icon>
+                                </ers-toolbar>
+                            </div>
+                        <div ng-if="!ctrl.loading">
+                            <ers-grid options="ctrl.gridOptions" class="basic-grid" style="height:450px"></ers-grid>
+                        </div>
+                        <div class="loading-container" ng-if="ctrl.loading">
+                            <div class="loading">
+                            </div>
+                        </div>
+                    </ers-panel-body>
+                </ers-panel>
+            </div>
+        </div>
+    </div>
+</div>

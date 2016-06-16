@@ -9,6 +9,8 @@ angular.module('app').config([
         $urlRouterProvider: IUrlRouterProvider) {
 
         $urlRouterProvider.when('/dg', '/dg/client');
+        $urlRouterProvider.when('/dg/good', '/dg/good/list');
+        $urlRouterProvider.when('/dg/order', '/dg/order/list');
 
         $stateProvider
             .state('dg', {
@@ -47,11 +49,51 @@ angular.module('app').config([
                     }
                 }
             }).state('dg.good.detail', {
-                url: '/detail',
+                url: '/detail/:id',
                 template: '<good-detail></good-detail>',
                 data: {
                     menu: {
                         name: 'Tab 2'
+                    }
+                }
+            }).state('dg.order', {
+                url: '/order',
+                template: '<order></order>',
+                data: {
+                    menu: {
+                        name: 'Order Manage'
+                    }
+                }
+             }).state('dg.order.list', {
+                url: '/list',
+                template: '<order-list></order-list>',
+                data: {
+                    menu: {
+                        name: 'Order List'
+                    }
+                }
+            }).state('dg.order.detail', {
+                url: '/detail/:id',
+                template: '<order-detail></order-detail>',
+                data: {
+                    menu: {
+                        name: 'Tab 2'
+                    }
+                }
+            }).state('dg.brand', {
+                url: '/brand',
+                template: '<brand></brand>',
+                data: {
+                    menu: {
+                        name: 'Brand Manage'
+                    }
+                }
+            }).state('dg.category', {
+                url: '/category',
+                template: '<category></category>',
+                data: {
+                    menu: {
+                        name: 'Category Manage'
                     }
                 }
             });

@@ -1,21 +1,215 @@
 <div>
-    <h1 class="page-title">Good Management</h1>
-    <div class="row">
-        <div class="col-md-5 col-lg-5 col-xlg-4">
-            <ers-panel collapsible="false">
-                <ers-panel-header>Good List</ers-panel-header>
-                <ers-panel-body>
+    <title>Simple example</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+
+    <style>
+        .my-drop-zone {
+            border: dotted 3px lightgray;
+        }
+        
+        .nv-file-over {
+            border: dotted 3px red;
+        }
+        /* Default class applied to drop zones on over */
+        
+        .another-file-over-class {
+            border: dotted 3px green;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+    </style>
+    <ers-panel>
+        <ers-panel-header>
+            Good
+            <div class="btn-group pull-right">
+                <button class="btn btn-icon" ng-show="ctrl.isCreate" ng-click="ctrl.createGood()" title="Create"><i class="fa fa-save"></i></button>
+                <button class="btn btn-icon" ng-show="!ctrl.isCreate" ng-click="ctrl.updateGood()" title="Save"><i class="fa fa-save"></i></button>
+            </div>
+        </ers-panel-header>
+        <ers-panel-body>
+            <div>
+                <form class="form-horizontal" id="formSample" name="formSample" novalidate ers-form="ctrl.submit()">
                     <div class="form-group">
-                        <ers-toolbar>
-                            <ers-icon name="edit" ng-click="ctrl.enableEdit()" ng-disabled="ctrl.isEditing"></ers-icon>
-                            <ers-toolbar-separator></ers-toolbar-separator>
-                            <ers-icon name="save" ng-click="ctrl.submit()" type="submit" form="formSample" ng-disabled="!ctrl.isEditing"></ers-icon>
-                            <ers-icon name="cancel" ng-click="ctrl.cancelEdit()" ng-disabled="!ctrl.isEditing"></ers-icon>
-                        </ers-toolbar>
-                        <ers-grid options="ctrl.gridOptions" ng-style="{'height': ctrl.isDataLake ? '320px':'353px'}"></ers-grid>
+                        <ers-label value="Name:" class="col-sm-2 control-label"></ers-label>
+                        <ers-textbox ng-model="ctrl.good.name" ng-maxlength="100" class="col-sm-3"></ers-textbox>
+                        <ers-label class="col-sm-2 control-label" value="People:"></ers-label>
+                        <ers-dropdown-select class="col-sm-3" ng-required="true" 
+                        dropdown-select-type="standard" filter-mode="auto" items="ctrl.peoples"
+                        item-display-property="name" placeholder="Select a people" 
+                        ng-model="ctrl.good.people">
+                            </ers-drodpwon-select>
                     </div>
-                </ers-panel-body>
-            </ers-panel>
+                    <div class="form-group">
+                        <ers-label value="Size:" class="col-sm-2 control-label"></ers-label>
+                        <ers-textbox ng-model="ctrl.good.size" ng-maxlength="100" class="col-sm-3"></ers-textbox>
+                        <ers-label class="col-sm-2 control-label" value="Brand:"></ers-label>
+                        <ers-dropdown-select class="col-sm-3" ng-required="true" 
+                        dropdown-select-type="standard" filter-mode="auto" items="ctrl.brands"
+                        item-display-property="name" placeholder="Select a brand"  
+                        ng-model="ctrl.good.brand">
+                            </ers-drodpwon-select>
+                    </div>
+                    <div class="form-group">
+                        <ers-label value="Price:" class="col-sm-2 control-label"></ers-label>
+                        <ers-textbox ng-model="ctrl.good.price" ng-maxlength="100" class="col-sm-3"></ers-textbox>
+
+                        <ers-label class="col-sm-2 control-label" value="Category:"></ers-label>
+                        <ers-dropdown-select class="col-sm-3" ng-required="true" 
+                        dropdown-select-type="standard" filter-mode="auto" items="ctrl.categorys"
+                        item-display-property="name" 
+                        ng-model="ctrl.good.category">
+                            </ers-drodpwon-select>
+                    </div>
+
+                </form>
+            </div>
+    </ers-panel>
+    <div class="col-md-12" ng-show="false" uploader="uploader" filters="queueLimit, customFilter">
+        Multiple
+        <input type="file" nv-file-select="" uploader="ctrl.uploader" multiple />
+        <br/>
+        <h3>Upload queue</h3>
+        <p>Queue length: {{ ctrl.uploader.queue.length }}</p>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th width="50%">Name</th>
+                    <th ng-show="ctrl.uploader.isHTML5">Size</th>
+                    <th ng-show="ctrl.uploader.isHTML5">Progress</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in ctrl.uploader.queue">
+                    <td><strong>{{ item.file.name }}</strong></td>
+                    <td ng-show="ctrl.uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                    <td ng-show="ctrl.uploader.isHTML5">
+                        <div class="progress" style="margin-bottom: 0;">
+                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                        <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                        <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                    </td>
+                    <td nowrap>
+                        <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                            <span class="glyphicon glyphicon-upload"></span> Upload
+                        </button>
+                        <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                            <span class="glyphicon glyphicon-trash"></span> Remove
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div>
+            <div>
+                Queue progress:
+                <div class="progress" style="">
+                    <div class="progress-bar" role="progressbar" ng-style="{ 'width': ctrl.uploader.progress + '%' }"></div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-success btn-s" ng-click="ctrl.uploader.uploadAll()" ng-disabled="!ctrl.uploader.getNotUploadedItems().length">
+                <span class="glyphicon glyphicon-upload"></span> Upload all
+            </button>
+            <button type="button" class="btn btn-warning btn-s" ng-click="ctrl.uploader.cancelAll()" ng-disabled="!ctrl.uploader.isUploading">
+                <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+            </button>
+            <button type="button" class="btn btn-danger btn-s" ng-click="ctrl.uploader.clearQueue()" ng-disabled="!ctrl.uploader.queue.length">
+                <span class="glyphicon glyphicon-trash"></span> Remove all
+            </button>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div>
+                <ers-panel>
+                    <ers-panel-header>
+                        香港价格
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-icon" ng-click="ctrl.refresh()" title="Refresh"><i class="fa fa-refresh"></i></button>
+                        </div>
+                    </ers-panel-header>
+                    <ers-panel-body>
+                        <div ng-if="!ctrl.loading">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Shop_Name</th>
+                                        <th>Price($)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="u in ctrl.dgGoodHkPrices">
+                                        <td>
+                                            <ers-textbox ng-model="u.shopName"></ers-textbox>
+                                        </td>
+                                        <td>
+                                            <ers-textbox ng-model="u.price"></ers-textbox>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="loading-container" ng-if="ctrl.loading">
+                            <div class="loading">
+                            </div>
+                        </div>
+                    </ers-panel-body>
+                </ers-panel>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div>
+                <ers-panel>
+                    <ers-panel-header>
+                        国内价格
+                    </ers-panel-header>
+                    <ers-panel-body>
+                        <div ng-if="!ctrl.loading">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Shop_Name</th>
+                                        <th width="15%">Price(￥)</th>
+                                        <th width="65%">Url</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="u in ctrl.dgGoodTbPrices">
+                                        <td>
+                                            <ers-textbox ng-model="u.shopName"></ers-textbox>
+                                        </td>
+                                        <td>
+                                            <ers-textbox ng-model="u.price"></ers-textbox>
+                                        </td>
+                                        <td>
+                                            <ers-textbox ng-model="u.url"></ers-textbox>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="loading-container" ng-if="ctrl.loading">
+                            <div class="loading">
+                            </div>
+                        </div>
+                    </ers-panel-body>
+                </ers-panel>
+            </div>
         </div>
     </div>
 </div>

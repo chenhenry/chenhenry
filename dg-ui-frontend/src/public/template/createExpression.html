@@ -1,7 +1,17 @@
-<ers-panel header="Expression">
-    <form>
-        <div class="form-group margin-bottom-default">
-            <textarea class="form-control" rows="5" ng-model="ctrl.name">{{ctrl.name}}</textarea>
+<ers-panel header="Expression" style="height:450px">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <ers-label class="col-sm-2 control-label" value="Good:"></ers-label>
+            <ers-dropdown-select class="col-sm-6" ng-required="true" 
+            dropdown-select-type="grid"
+	        filter-mode="auto"
+            dropdown-select-type="standard" filter-mode="auto" items="ctrl.goods"
+            item-display-property="name" placeholder="Select a good" grid-column-headers="ctrl.itemColumns"
+            ng-change="ctrl.onchangeofgood(itemSelected)" ng-model="ctrl.good"
+            use-search-icon="true"
+	multi-select="true">
+                </ers-drodpwon-select>
         </div>
+        
     </form>
 </ers-panel>

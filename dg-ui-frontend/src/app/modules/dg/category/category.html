@@ -1,0 +1,38 @@
+<div>
+    <h1 class="page-title">Category Management</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <ers-panel header="Category List">
+                <ers-grid options="ctrl.gridOptions" style="height:380px"></ers-grid>
+            </ers-panel>
+        </div>
+        <div class="col-md-4">
+            <ers-panel collapsible="false">
+                <ers-panel-header>Category Detail</ers-panel-header>
+                <ers-panel-body>
+                    <div class="form-group">
+                        <ers-toolbar>
+                            <ers-icon name="edit" ng-click="ctrl.enableEdit()" ng-disabled="ctrl.isEditing"></ers-icon>
+                            <ers-toolbar-separator></ers-toolbar-separator>
+                            <ers-icon name="save" ng-click="ctrl.submit()" type="submit" form="formSample" ng-disabled="!ctrl.isEditing"></ers-icon>
+                            <ers-icon name="cancel" ng-click="ctrl.cancelEdit()" ng-disabled="!ctrl.isEditing"></ers-icon>
+                        </ers-toolbar>
+                    </div>
+                    <div>
+                        <form class="form-horizontal" id="formSample" name="formSample" novalidate ers-form="ctrl.submit()">
+                            <div class="form-group">
+                                <ers-label value="Name:" class="col-sm-4 control-label"></ers-label>
+                                <ers-textbox ng-model="ctrl.category.name" ng-maxlength="100" class="col-sm-6" ng-readonly='!ctrl.isEditing'></ers-textbox>
+                            </div>
+                        </form>
+                    </div>
+                </ers-panel-body>
+            </ers-panel>
+        </div>
+        <div class="col-md-5">
+            <ers-panel header="Good List">
+                <ers-grid options="ctrl.gridOptionsOfGood" style="height:380px"></ers-grid>
+            </ers-panel>
+        </div>
+    </div>
+</div>

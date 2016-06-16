@@ -34,7 +34,7 @@ var component = angular.module('app.modules.storage.catalog.structure', [
                         headerName: "Data Format",
                         field: "files"
                     },
-                    { 
+                    {
                         headerName: "Description",
                         field: "structure"
                     }
@@ -77,23 +77,23 @@ var component = angular.module('app.modules.storage.catalog.structure', [
 
                 ctrl.deleteDataAsset = function() {
                     var r = confirm("Are you sure to delete the structure?");
-                        if (r == true) {
-                         
-                            dataassetService.deleteDataAsset(ctrl.selectedDataSource, ctrl.structure_name,
-                                (result) => {
-                                    console.log("Delete structure successfully!");
-                                    $location.path('/storage/catalog/unstructuredfiles/' + ctrl.selectedDataSource);
-                                }, (error) => {
-                                    console.log("Cannot delete structure! Reason: " + error.data.message);
-                                    $location.path('/storage/catalog/unstructuredfiles/' + ctrl.selectedDataSource);
-                                });
-                        }
+                    if (r == true) {
+
+                        dataassetService.deleteDataAsset(ctrl.selectedDataSource, ctrl.structure_name,
+                            (result) => {
+                                console.log("Delete structure successfully!");
+                                $location.path('/storage/catalog/unstructuredfiles/' + ctrl.selectedDataSource);
+                            }, (error) => {
+                                console.log("Cannot delete structure! Reason: " + error.data.message);
+                                $location.path('/storage/catalog/unstructuredfiles/' + ctrl.selectedDataSource);
+                            });
+                    }
                 }
 
                 ctrl.removeAssignedStructure = function() {
                     var values = ctrl.gridFileOptions.api.selectionController.selectedRows;
 
-                    if(values.length == 0){
+                    if (values.length == 0) {
                         console.log("No files selected!");
                         return;
                     }
@@ -101,7 +101,7 @@ var component = angular.module('app.modules.storage.catalog.structure', [
                     for (var i = 0; i < values.length; i++) {
                         linkIds[i] = values[i].id;
                     }
-                    
+
                     dataassetService.unassignDataAssetLinks(ctrl.selectedDataSource, ctrl.structure_name, linkIds.join(","),
                         (result) => {
                             console.log("Remove files successfully!");
@@ -112,19 +112,19 @@ var component = angular.module('app.modules.storage.catalog.structure', [
                 };
 
 
-                ctrl.loadDetail = function(sourceName:String, dataAssetName: String) {
+                ctrl.loadDetail = function(sourceName: String, dataAssetName: String) {
                     var request = dataassetService.getDataAssetDetail(sourceName, dataAssetName,
                         (response) => {
-                          
+
                             ctrl.structure = response;
                             if (ctrl.structure.type != "ORACLE") {
                                 ctrl.isDataLake = true;
-                                
-                                response.structure.recordDelimiter = response.structure.recordDelimiter.replace('\r', '\\r').replace('\n','\\n');
+
+                                response.structure.recordDelimiter = response.structure.recordDelimiter.replace('\r', '\\r').replace('\n', '\\n');
                                 console.log(response.structure.recordDelimiter);
                             } else {
                                 ctrl.isDataLake = false;
-                               
+
                             }
 
                             ctrl.gridOptions.api.setRowData(response["fields"]);
@@ -158,30 +158,30 @@ var component = angular.module('app.modules.storage.catalog.structure', [
                     };
                     ctrl.loadDetail(ctrl.selectedDataSource, ctrl.structure_name);
                 };
-                
+
                 ctrl.enableEdit = function() {
                     ctrl.isEditing = true;
                     ctrl.originStructure = angular.copy(ctrl.structure);
                 }
-                
+
                 ctrl.cancelEdit = function() {
                     ctrl.isEditing = false;
                     console.log(ctrl.originStructure);
                     angular.copy(ctrl.originStructure, ctrl.structure);
                 }
 
-                ctrl.init(); 
-                ctrl.submit = function () {
+                ctrl.init();
+                ctrl.submit = function() {
                     var toupdate = angular.copy(ctrl.structure);
-                    toupdate.structure.recordDelimiter = ctrl.structure.structure.recordDelimiter.replace('\\r', '\r').replace('\\n','\n');
+                    toupdate.structure.recordDelimiter = ctrl.structure.structure.recordDelimiter.replace('\\r', '\r').replace('\\n', '\n');
                     console.log(toupdate);
                     dataassetService.updateDataAssetSummary(toupdate, (result) => {
                         ctrl.isEditing = false;
-                    }, (error)=>{
+                    }, (error) => {
                         alert(error.data.message);
                     });
                 }
-                
+
                 ctrl.isEditing = false;
             }],
             controllerAs: 'ctrl',

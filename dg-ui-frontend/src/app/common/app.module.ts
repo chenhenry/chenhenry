@@ -9,6 +9,7 @@ import 'angular-ui-router';
 import 'ui-router-extras';
 import 'angular-cookies';
 import 'angular-animate';
+import 'angular-file-upload';
 import 'angular-messages';
 import 'angular-sanitize';
 import 'angular-dynamic-locale';

@@ -1,15 +1,14 @@
 import * as angular from 'angular';
 
 
-import {IClient} from "../model/IClient";
-import {IClientResource} from "../resource/IClientResource";
-import '../services/client';
-import clientService from '../services/client';
+import {IClient} from "../model/IDg";
+import '../services/dg';
+import dgService from '../services/dg';
 
 var component = angular.module('app.modules.dg.client', [
-    'app.modules.dg.services.client'
+    'app.services.dg'
 ])
-    .directive('client', ['clientService', function(clientService) {
+    .directive('client', ['dgService', function(dgService) {
 
         return {
             replace: true,
@@ -23,11 +22,18 @@ var component = angular.module('app.modules.dg.client', [
 
                 ctrl.clientDefs = [
                     {
+                        headerName: "微信名称",
+                        width: 90,
+                        field: "wxname"
+                    },
+                    {
                         headerName: "名称",
+                        width: 70,
                         field: "name"
                     },
                     {
                         headerName: "地址",
+                        width: 340,
                         field: "address"
                     },
                     {
@@ -38,31 +44,30 @@ var component = angular.module('app.modules.dg.client', [
 
 
                 ctrl.gridOptions = {
-                    checkboxSelection: true,
-                    rowSelection: 'simple',
-                    columnDefs: ctrl.clientDefs,
-                    rowData: [],
-                    onRowSelected: ctrl.selectClient
+                    enableColResize: true,
+					checkboxSelection: true,
+					rowSelection: "multiple",
+					columnDefs: ctrl.clientDefs,
+					rowData: [],
+					enableSorting: true,
+					enableFilter: true
                 };
+
+                var sortByName = [
+                    { colId: 'name', sort: 'desc' }
+                ];
 
                 //Attributes
                 ctrl.loadAttributes = function() {
                     ctrl.attributesLoading = true;
 
-
-                    // Cancel previous request
-                    if (attributesRequest) {
-                        clientService.cancelRequest(attributesRequest);
-                    }
-
-
-
-
                     // Create new request to the service
-                    attributesRequest = clientService.getClientList(function(response) {
+                    attributesRequest = dgService.getClientList(function(response) {
                         ctrl.attributes = response;
-                        ctrl.gridOptions.api.setRowData(response);
                         ctrl.gridOptions.onRowSelected = ctrl.selectClient;
+                        ctrl.gridOptions.api.setRowData(response);
+                        // Sort data
+                        ctrl.gridOptions.api.setSortModel(sortByName);
                         ctrl.attributesLoading = false;
                     }, function(response) {
                         console.log("Error: " + response);
@@ -76,10 +81,20 @@ var component = angular.module('app.modules.dg.client', [
                 };
 
                 ctrl.submit = function() {
+                    if(ctrl.client.id == null){
+                        dgService.saveClient(ctrl.client, (result) => {
+                            ctrl.isEditing = true;
+                            ctrl.loadAttributes();
+                        }, (error) => {
+                            alert(error.data.message);
+                        });
+                    }
+                    
                     var toupdate = angular.copy(ctrl.client);
                     console.log(toupdate);
-                    clientService.updateClient(toupdate, (result) => {
-                        ctrl.isEditing = false;
+                    dgService.updateClient(toupdate, (result) => {
+                        ctrl.isEditing = true;
+                        ctrl.loadAttributes();
                     }, (error) => {
                         alert(error.data.message);
                     });
@@ -91,7 +106,7 @@ var component = angular.module('app.modules.dg.client', [
                 }
 
                 ctrl.cancelEdit = function() {
-                    ctrl.isEditing = false;
+                    ctrl.isEditing = true;
                     console.log(ctrl.originClient);
                     angular.copy(ctrl.originClient, ctrl.client);
                 }
@@ -99,7 +114,7 @@ var component = angular.module('app.modules.dg.client', [
 
                 // Init
                 ctrl.loadAttributes();
-                ctrl.isEditing = false;
+                ctrl.isEditing = true;
             },
             controllerAs: 'ctrl',
             template: require('./client.html')
