@@ -9,115 +9,145 @@ import java.util.Date;
 @Entity
 @Table(name = "DG_CLIENT")
 public class DgClient {
-  private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id_dg_client")
-  private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id_dg_client")
+    private long id;
 
-  @Column(name = "name")
-  private String name;
+    @Column(name = "wxname")
+    private String wxname;
 
-  @Column(name = "phone")
-  private String phone;
+    @Column(name = "name")
+    private String name;
 
-  @Column(name = "address")
-  private String address;
+    @Column(name = "phone")
+    private String phone;
 
-  @Column(name = "creator")
-  private String creator;
+    @Column(name = "address")
+    private String address;
 
-  @Column(name = "create_time")
-  private Date createTime;
+    @Column(name = "address1")
+    private String address1;
 
-  @Column(name = "description")
-  private String description;
+    @Column(name = "address2")
+    private String address2;
 
-  @Column(name = "update_by")
-  private String updateBy;
+    @Column(name = "creator")
+    private String creator;
 
-  @Column(name = "update_time")
-  private Date updateTime;
+    @Column(name = "create_time")
+    private Date createTime;
 
-//  @OneToMany(mappedBy = "dgClient", cascade = CascadeType.ALL, orphanRemoval = true)
-//  @JsonIgnore
-//  private List<DgOrder> dgOrders;
+    @Column(name = "description")
+    private String description;
 
-  public static long getSerialVersionUID() {
-    return serialVersionUID;
-  }
+    @Column(name = "update_by")
+    private String updateBy;
 
-  public long getId() {
-    return id;
-  }
+    @Column(name = "update_time")
+    private Date updateTime;
 
-  public void setId(long id) {
-    this.id = id;
-  }
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public long getId() {
+        return id;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-  public String getPhone() {
-    return phone;
-  }
+    public String getWxname() {
+        return wxname;
+    }
 
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
+    public void setWxname(String wxname) {
+        this.wxname = wxname;
+    }
 
-  public String getAddress() {
-    return address;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setAddress(String address) {
-    this.address = address;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public String getCreator() {
-    return creator;
-  }
+    public String getPhone() {
+        return phone;
+    }
 
-  public void setCreator(String creator) {
-    this.creator = creator;
-  }
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-  public Date getCreateTime() {
-    return createTime;
-  }
+    public String getAddress() {
+        return address;
+    }
 
-  public void setCreateTime(Date createTime) {
-    this.createTime = createTime;
-  }
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-  public String getDescription() {
-    return description;
-  }
+    public String getAddress1() {
+        return address1;
+    }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
 
-  public String getUpdateBy() {
-    return updateBy;
-  }
+    public String getAddress2() {
+        return address2;
+    }
 
-  public void setUpdateBy(String updateBy) {
-    this.updateBy = updateBy;
-  }
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
 
-  public Date getUpdateTime() {
-    return updateTime;
-  }
+    public String getCreator() {
+        return creator;
+    }
 
-  public void setUpdateTime(Date updateTime) {
-    this.updateTime = updateTime;
-  }
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
 
 }

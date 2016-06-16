@@ -26,21 +26,31 @@ public class DgOrderItem {
   @JsonIgnore
   private long id;
 
+  @Column(name = "name")
+  private String name;
+
+  @Column(name = "price")
+  private double price;
+
   @Column(name = "number")
-  private String number;
+  private int number;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "id_dg_order", updatable = false, insertable = true, nullable = false)
   @JsonIgnore
   private DgOrder dgOrder;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "id_dg_good", updatable = false, insertable = true, nullable = false)
-  @JsonIgnore
-  private DgGood dgGood;
+  @Column(name = "goodId")
+  private long goodId;
 
   @Column(name = "sum")
   private double sum;
+
+  @Column(name = "brand")
+  private String brand;
+
+  @Column(name = "category")
+  private String category;
 
   public static long getSerialVersionUID() {
     return serialVersionUID;
@@ -54,11 +64,19 @@ public class DgOrderItem {
     this.id = id;
   }
 
-  public String getNumber() {
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public int getNumber() {
     return number;
   }
 
-  public void setNumber(String number) {
+  public void setNumber(int number) {
     this.number = number;
   }
 
@@ -70,12 +88,12 @@ public class DgOrderItem {
     this.dgOrder = dgOrder;
   }
 
-  public DgGood getDgGood() {
-    return dgGood;
+  public long getGoodId() {
+    return goodId;
   }
 
-  public void setDgGood(DgGood dgGood) {
-    this.dgGood = dgGood;
+  public void setGoodId(long goodId) {
+    this.goodId = goodId;
   }
 
   public double getSum() {
@@ -84,5 +102,29 @@ public class DgOrderItem {
 
   public void setSum(double sum) {
     this.sum = sum;
+  }
+
+  public double getPrice() {
+    return price;
+  }
+
+  public void setPrice(double price) {
+    this.price = price;
+  }
+
+  public String getBrand() {
+    return brand;
+  }
+
+  public void setBrand(String brand) {
+    this.brand = brand;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
   }
 }

@@ -11,4 +11,5 @@ public interface DgOrderService {
   void delete(Long id);
   void updateDgClient(Long id, DgOrder dgOrder);
   void create(DgOrder dgOrder);
+  Iterable<DgOrder> getOrdersByClientId(Long id);
 }

@@ -35,7 +35,7 @@ public class DgGoodHkPrice {
 
   @Column(name = "type")
   @Enumerated(EnumType.STRING)
-  private DGGoodPriceType String;
+  private DGGoodPriceType type;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "id_dg_good", updatable = false, insertable = true, nullable = false)
@@ -66,12 +66,12 @@ public class DgGoodHkPrice {
     this.shopName = shopName;
   }
 
-  public DGGoodPriceType getString() {
-    return String;
+  public DGGoodPriceType getType() {
+    return type;
   }
 
-  public void setString(DGGoodPriceType string) {
-    String = string;
+  public void setType(DGGoodPriceType type) {
+    this.type = type;
   }
 
   public DgGood getDgGood() {

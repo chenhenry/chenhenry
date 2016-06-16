@@ -26,7 +26,32 @@ angular.module('app').config([
                 template: '<client></client>',
                 data : {
                     menu: {
-                        name: '客户管理'
+                        name: 'Client Manage'
+                    }
+                }
+            }).state('dg.good', {
+                url: '/good',
+                template: '<good></good>',
+                data: {
+                    menu: {
+                        name: 'Good Manage',
+                        icon: 'fa-folder-open'
+                    }
+                }
+            }).state('dg.good.list', {
+                url: '/list',
+                template: '<good-list></good-list>',
+                data: {
+                    menu: {
+                        name: 'Tab 1'
+                    }
+                }
+            }).state('dg.good.detail', {
+                url: '/detail',
+                template: '<good-detail></good-detail>',
+                data: {
+                    menu: {
+                        name: 'Tab 2'
                     }
                 }
             });

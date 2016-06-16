@@ -1,18 +1,6 @@
 package com.lovtter.dg.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -22,26 +10,33 @@ import java.util.List;
 @Entity
 @Table(name = "DG_ORDER")
 public class DgOrder {
-  private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 2L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id_dg_order")
-  @JsonIgnore
   private long id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "id_dg_client", updatable = false, insertable = true, nullable = false)
-  private DgClient dgClient;
+  @Column(name = "clientId")
+  private long clientId;
 
   @OneToMany(mappedBy = "dgOrder", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<DgOrderItem> dgOrderItems;
 
-  @Column(name = "name")
-  private String name;
+  @Column(name = "code")
+  private String code;
+
+  @Column(name = "clientName")
+  private String clientName;
 
   @Column(name = "total_sum")
   private double totalSum;
+
+  @Column(name = "phone")
+  private String phone;
+
+  @Column(name = "address")
+  private String address;
 
   @Column(name = "creator")
   private String creator;
@@ -74,12 +69,12 @@ public class DgOrder {
     this.id = id;
   }
 
-  public DgClient getDgClient() {
-    return dgClient;
+  public long getClientId() {
+    return clientId;
   }
 
-  public void setDgClient(DgClient dgClient) {
-    this.dgClient = dgClient;
+  public void setClientId(long clientId) {
+    this.clientId = clientId;
   }
 
   public List<DgOrderItem> getDgOrderItems() {
@@ -90,12 +85,20 @@ public class DgOrder {
     this.dgOrderItems = dgOrderItems;
   }
 
-  public String getName() {
-    return name;
+  public String getCode() {
+    return code;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setCode(String code) {
+    this.code = code;
+  }
+
+  public String getClientName() {
+    return clientName;
+  }
+
+  public void setClientName(String clientName) {
+    this.clientName = clientName;
   }
 
   public double getTotalSum() {
@@ -136,5 +139,21 @@ public class DgOrder {
 
   public void setUpdateBy(String updateBy) {
     this.updateBy = updateBy;
+  }
+
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public void setAddress(String address) {
+    this.address = address;
   }
 }

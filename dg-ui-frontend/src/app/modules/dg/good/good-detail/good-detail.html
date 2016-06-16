@@ -1,0 +1,21 @@
+<div>
+    <h1 class="page-title">Good Management</h1>
+    <div class="row">
+        <div class="col-md-5 col-lg-5 col-xlg-4">
+            <ers-panel collapsible="false">
+                <ers-panel-header>Good List</ers-panel-header>
+                <ers-panel-body>
+                    <div class="form-group">
+                        <ers-toolbar>
+                            <ers-icon name="edit" ng-click="ctrl.enableEdit()" ng-disabled="ctrl.isEditing"></ers-icon>
+                            <ers-toolbar-separator></ers-toolbar-separator>
+                            <ers-icon name="save" ng-click="ctrl.submit()" type="submit" form="formSample" ng-disabled="!ctrl.isEditing"></ers-icon>
+                            <ers-icon name="cancel" ng-click="ctrl.cancelEdit()" ng-disabled="!ctrl.isEditing"></ers-icon>
+                        </ers-toolbar>
+                        <ers-grid options="ctrl.gridOptions" ng-style="{'height': ctrl.isDataLake ? '320px':'353px'}"></ers-grid>
+                    </div>
+                </ers-panel-body>
+            </ers-panel>
+        </div>
+    </div>
+</div>

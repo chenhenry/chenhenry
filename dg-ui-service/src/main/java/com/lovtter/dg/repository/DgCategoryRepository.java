@@ -1,16 +1,14 @@
 package com.lovtter.dg.repository;
 
-import com.lovtter.dg.domain.DgOrder;
+import com.lovtter.dg.domain.DgCategory;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 /**
  * Created by pengx on 3/4/2016.
  */
 
 @Repository
-public interface DgOrderRepository extends CrudRepository<DgOrder, Long> {
-  DgOrder findById(Long id);
+public interface DgCategoryRepository extends CrudRepository<DgCategory, Long> {
+  DgCategory findById(Long id);
 }

@@ -1,9 +1,11 @@
 import * as angular from 'angular';
 import './client/client';
+import './good/good';
  
 var component = angular.module('app.modules.dg', [
     'ers.components.all',
-    'app.modules.dg.client'
+    'app.modules.dg.client',
+    'app.modules.dg.good'
 ])
     .directive('dg', function() {
         return {

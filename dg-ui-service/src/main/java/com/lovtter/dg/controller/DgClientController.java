@@ -3,7 +3,6 @@ package com.lovtter.dg.controller;
 
 import com.lovtter.dg.domain.DgClient;
 import com.lovtter.dg.service.DgClientService;
-import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class DgClientController {
   }
 
   @RequestMapping(method = RequestMethod.POST, path = "/")
-  public void createDataAsset(@RequestBody DgClient dgClient) {
+  public void createDgClient(@RequestBody DgClient dgClient) {
     dgClientService.create(dgClient);
   }
 
@@ -35,7 +34,7 @@ public class DgClientController {
   }
 
   @RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
-  public void deleteDataAsset(@PathVariable Long id) {
+  public void deleteDgClient(@PathVariable Long id) {
     dgClientService.delete(id);
   }
 

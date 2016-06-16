@@ -109,6 +109,32 @@
       <artifactId>jacoco-maven-plugin</artifactId>
       <version>0.7.6.201602180812</version>
     </dependency>
+    <dependency>
+      <groupId>org.jvnet</groupId>
+      <artifactId>mimepull</artifactId>
+      <version>1.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-multipart</artifactId>
+      <version>2.21</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.ext</groupId>
+      <artifactId>jersey-spring3</artifactId>
+      <version>2.21</version>
+      <exclusions>
+        <!--
+          This one is interfering with jboss-logging 3.3.
+          It has a redefinition of the logger :/
+        -->
+        <exclusion>
+          <groupId>org.glassfish.hk2.external</groupId>
+          <artifactId>bean-validator</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
   </dependencies>
 
   <profiles>

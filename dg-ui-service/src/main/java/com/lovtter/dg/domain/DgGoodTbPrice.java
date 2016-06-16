@@ -32,14 +32,14 @@ public class DgGoodTbPrice {
   private double price;
 
   @Column(name = "shop_name")
-  private String shop_name;
+  private String shopName;
 
   @Column(name = "url")
   private String url;
 
   @Column(name = "type")
   @Enumerated(EnumType.STRING)
-  private DGGoodPriceType String;
+  private DGGoodPriceType type;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "id_dg_good", updatable = false, insertable = true, nullable = false)
@@ -66,12 +66,12 @@ public class DgGoodTbPrice {
     this.price = price;
   }
 
-  public java.lang.String getShop_name() {
-    return shop_name;
+  public java.lang.String getShopName() {
+    return shopName;
   }
 
-  public void setShop_name(java.lang.String shop_name) {
-    this.shop_name = shop_name;
+  public void setShopName(java.lang.String shopName) {
+    this.shopName = shopName;
   }
 
   public java.lang.String getUrl() {
@@ -82,12 +82,12 @@ public class DgGoodTbPrice {
     this.url = url;
   }
 
-  public DGGoodPriceType getString() {
-    return String;
+  public DGGoodPriceType getType() {
+    return type;
   }
 
-  public void setString(DGGoodPriceType string) {
-    String = string;
+  public void setType(DGGoodPriceType type) {
+    this.type = type;
   }
 
   public DgGood getDgGood() {

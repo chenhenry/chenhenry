@@ -27,9 +27,20 @@ public class DgGood {
   @Column(name = "name")
   private String name;
 
-  @Column(name = "sale_price")
-  private double salePrice;
+  @Column(name = "category")
+  private String category;
 
+  @Column(name = "people")
+  private String people;
+
+  @Column(name = "brand")
+  private String brand;
+
+  @Column(name = "size")
+  private String size;
+
+  @Column(name = "price")
+  private double price;
 
   @OneToMany(mappedBy = "dgGood", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<DgGoodHkPrice> dgGoodHkPrices;
@@ -124,5 +135,45 @@ public class DgGood {
 
   public void setUpdateTime(Date updateTime) {
     this.updateTime = updateTime;
+  }
+
+  public double getPrice() {
+    return price;
+  }
+
+  public String getCategory() {
+    return category;
+  }
+
+  public void setCategory(String category) {
+    this.category = category;
+  }
+
+  public String getBrand() {
+    return brand;
+  }
+
+  public void setBrand(String brand) {
+    this.brand = brand;
+  }
+
+  public void setPrice(double price) {
+    this.price = price;
+  }
+
+  public String getPeople() {
+    return people;
+  }
+
+  public void setPeople(String people) {
+    this.people = people;
+  }
+
+  public String getSize() {
+    return size;
+  }
+
+  public void setSize(String size) {
+    this.size = size;
   }
 }
