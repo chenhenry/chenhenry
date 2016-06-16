@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -26,6 +27,7 @@ public class DgGoodServiceImpl implements DgGoodService {
     public DgGood getDgGoodById(Long id) {
         return dgGoodRepository.findById(id);
     }
+
     @Override
     public void delete(Long id) {
         dgGoodRepository.delete(id);
@@ -39,5 +41,15 @@ public class DgGoodServiceImpl implements DgGoodService {
     @Override
     public void create(DgGood dgGood) {
         dgGoodRepository.save(dgGood);
+    }
+
+    @Override
+    public List<DgGood> findByBrand(String brand) {
+        return dgGoodRepository.findByBrand(brand);
+    }
+
+    @Override
+    public List<DgGood> findByCategory(String category) {
+        return dgGoodRepository.findByCategory(category);
     }
 }
